@@ -1,11 +1,8 @@
 import sqlite3
 
-
-
 # This program is responsible for creating the table for swiping system
 # It loads the data from provided 'ids.csv' that contains the employees' IDs and card swipe informations.
 # Note that the 'ids.csv' should be in the same folder as this '.py' file.
-
 
 ################################ Initialize the table #############################
 # Drop all the tables and create the following tables 
@@ -24,7 +21,6 @@ def insert_into_ids(cursor ,connection, id_list):
     # id_list.append((node_id, lat, lon))
     connection.commit()
 
-
 # This program loads the 'ids.csv' and pass all the needed information to the related program, it is a 'bridge program'
 def load_emoloyee_id():
     id_list = []
@@ -35,9 +31,6 @@ def load_emoloyee_id():
         #id_list = map(tuple, reader)
     return id_list
 	
-
-
-
 def main():
 	# connect to the 'signin.db' database file
     connection = sqlite3.connect('signin.db')
