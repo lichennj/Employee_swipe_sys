@@ -8,8 +8,6 @@ import sys
 # Drop all the tables and create the following tables 
 # ids   (id integer, name text, PRIMARY KEY(id))
 # in_time (id integer, tm time, FOREIGN KEY(id) REFERENCES ids(id))
-
-
 def initialize_table(cursor ,connection):
     cursor.execute("DROP TABLE IF EXISTS ids;")
     cursor.execute("DROP TABLE IF EXISTS in_time;")
@@ -34,8 +32,6 @@ def insert_into_ids(cursor ,connection, id_list):
 def output_by_people():
     cursor.execute('')
 
-
-
 def insert_into(cursor ,connection):
     # detect the input and automatically load into table
     #print('Please swipe the card')
@@ -53,21 +49,17 @@ def insert_into(cursor ,connection):
     # Match the front and end part
     match = re.match(';\d\d\d\d\d\d\d\d\d\d\d\d\d\?', raw_id)    
     # ';7701147272401?'
-    
-
 
     if not match:
         print('Invalid card')
         return
         # jump to the front
         
-
     # slice the specific student number
     student_id = raw_id[5:12]
 
     # insert the current swipe info into the database
     insert_time(cursor ,connection, student_id)
-
 
 def load_db():
     connection = sqlite3.connect('signin.db')
@@ -82,7 +74,6 @@ def load_emoloyee_id():
         #id_list = map(tuple, reader)
     return id_list
 
-
 def main():
     print('Program start')
     connection = sqlite3.connect('signin.db')
@@ -91,8 +82,6 @@ def main():
     insert_into_ids(cursor ,connection, load_emoloyee_id())
     while(1):
         insert_into(cursor ,connection)
-
-
 
 main()
 
